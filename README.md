@@ -360,8 +360,98 @@ Toggle.Text = "PANDA"
 Toggle.TextColor3 = Color3.fromRGB(255, 255, 255)
 Toggle.TextScaled = true
 Toggle.MouseButton1Down:connect(function()
-	game:GetService("VirtualInputManager"):SendKeyEvent(true,305,false,game)
-	game:GetService("VirtualInputManager"):SendKeyEvent(false,305,false,game)
+		ResetBtn.MouseButton1Click:Connect(function()
+			pfp = "https://www.roblox.com/headshot-thumbnail/image?userId=".. game.Players.LocalPlayer.UserId .."&width=420&height=420&format=png"
+			UserImage.Image = pfp 
+			UserPanelUserImage.Image = pfp
+			SaveInfo()
+
+			AvatarChange:TweenSize(UDim2.new(0, 0, 0, 0), Enum.EasingDirection.Out, Enum.EasingStyle.Quart, .2, true)
+			TweenService:Create(
+				AvatarChange,
+				TweenInfo.new(.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
+				{BackgroundTransparency = 1}
+			):Play()
+			TweenService:Create(
+				NotificationHolder,
+				TweenInfo.new(.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
+				{BackgroundTransparency = 1}
+			):Play()
+			wait(.2)
+			NotificationHolder:Destroy()
+		end)
+
+		ResetCorner.CornerRadius = UDim.new(0, 4)
+		ResetCorner.Name = "ResetCorner"
+		ResetCorner.Parent = ResetBtn
+		
+		CloseBtn1.MouseButton1Click:Connect(function()
+			AvatarChange:TweenSize(UDim2.new(0, 0, 0, 0), Enum.EasingDirection.Out, Enum.EasingStyle.Quart, .2, true)
+			TweenService:Create(
+				AvatarChange,
+				TweenInfo.new(.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
+				{BackgroundTransparency = 1}
+			):Play()
+			TweenService:Create(
+				NotificationHolder,
+				TweenInfo.new(.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
+				{BackgroundTransparency = 1}
+			):Play()
+			wait(.2)
+			NotificationHolder:Destroy()
+		end)
+
+		CloseBtn2.MouseButton1Click:Connect(function()
+			AvatarChange:TweenSize(UDim2.new(0, 0, 0, 0), Enum.EasingDirection.Out, Enum.EasingStyle.Quart, .2, true)
+			TweenService:Create(
+				AvatarChange,
+				TweenInfo.new(.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
+				{BackgroundTransparency = 1}
+			):Play()
+			TweenService:Create(
+				NotificationHolder,
+				TweenInfo.new(.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
+				{BackgroundTransparency = 1}
+			):Play()
+			wait(.2)
+			NotificationHolder:Destroy()
+		end)
+		
+		CloseBtn2.MouseEnter:Connect(function()
+			TweenService:Create(
+				Close2Icon,
+				TweenInfo.new(.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
+				{ImageColor3 = Color3.fromRGB(210,210,210)}
+			):Play()
+		end)
+
+		CloseBtn2.MouseLeave:Connect(function()
+			TweenService:Create(
+				Close2Icon,
+				TweenInfo.new(.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
+				{ImageColor3 = Color3.fromRGB(119, 122, 127)}
+			):Play()
+		end)
+
+
+		AvatarTextbox.Focused:Connect(function()
+			TweenService:Create(
+				TextBoxFrame,
+				TweenInfo.new(.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
+				{BackgroundColor3 = Color3.fromRGB(114, 137, 228)}
+			):Play()
+		end)
+
+		AvatarTextbox.FocusLost:Connect(function()
+			TweenService:Create(
+				TextBoxFrame,
+				TweenInfo.new(.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
+				{BackgroundColor3 = Color3.fromRGB(37, 40, 43)}
+			):Play()
+		end)
+
+
+	end)
 end)
 	
 	local SettingsOpenBtn = Instance.new("TextButton")
